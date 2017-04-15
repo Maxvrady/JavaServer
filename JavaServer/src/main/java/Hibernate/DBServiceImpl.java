@@ -6,12 +6,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 
-public class Connection {
+public class DBServiceImpl implements DBService {
 
     private Configuration conn = getConf();
     private SessionFactory factory = conn.buildSessionFactory();
 
-    private Configuration getConf() {
+    public Configuration getConf() {
 
         Configuration configurations = new Configuration();
         configurations.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL57Dialect");
@@ -35,13 +35,15 @@ public class Connection {
         session.close();
     }
 
-    public UserDataSet getUsersById(Integer id) {
+    public UserDataSet getUserById(Integer id) {
+
         Session session = factory.openSession();
         session.beginTransaction();
         return session.load(UserDataSet.class, id);
     }
 
     public UserDataSet getUserByUsername(String username) {
+
         Session session = factory.openSession();
         session.beginTransaction();
         Criteria criteria = session.createCriteria(UserDataSet.class);

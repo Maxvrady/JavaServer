@@ -3,12 +3,12 @@ package DataBase;
 import java.io.IOException;
 import java.sql.*;
 
-public class Connections {
+public class JDBC {
 
     private Driver drv;
     private Connection conn;
 
-    public Connections() throws Exception{
+    public JDBC() throws Exception{
 
         this.drv = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
         DriverManager.registerDriver(this.drv);
