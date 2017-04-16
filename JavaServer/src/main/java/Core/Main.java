@@ -3,6 +3,7 @@ package Core;
 import Hibernate.DBService;
 import Hibernate.DBServiceImpl;
 import Servlet.Index;
+import Time.TimeHelper;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -14,6 +15,10 @@ public class Main {
         DBService dbService = new DBServiceImpl();
         System.out.println(dbService.getUserById(1).getUsername());
         System.out.println(dbService.getUserByUsername("admin").getPassword());
+
+        TimeHelper timeHelper = new TimeHelper();
+        System.out.println(timeHelper.getTime());
+        System.out.println(timeHelper.getLocalTime());
 
         Index indexServlet = new Index();
 
